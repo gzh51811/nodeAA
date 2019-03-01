@@ -28,10 +28,12 @@ router.post('/insertUser', async (req, res, next) => {
     let {
         name,
         age,
+        xihuan
     } = req.body
     let data = await insert(`students`, [{ 
         name: name,
-        age: age
+        age: age,
+        xihuan: xihuan
     }])
     res.send(data.ops[0]);
 });
