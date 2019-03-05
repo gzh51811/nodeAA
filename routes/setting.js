@@ -55,4 +55,40 @@ router.post('/updateUser', async (req, res, next) => {
     let data = await update(`students`, { name: name }, [{ age: age }]);
     res.send(data);
 });
+
+
+
+// router.post('/login', async (req, res, next) => {
+//     console.log(req.body);
+//     let {
+//       inputEmail,
+//       inputPassword
+//     } = req.body
+//     let data = await find(`students`, {
+//       name: inputEmail
+//     })
+//     console.log(data)
+//     if (data[0].password === inputPassword) {
+//       res.send({
+//         status: "success",
+//         token: token.createToken({
+//           inputEmail,
+//           inputPassword
+//         }, 60)
+//       });
+//     } else {
+//       res.send({
+//         status: "fail"
+//       });
+//     }
+//   });
+  
+//   router.post('/autoLogin', async (req, res, next) => {
+//     // console.log(req.headers)
+//     res.send({
+//       status: token.checkToken(req.headers.token)
+//     })
+//   })
+
+
 module.exports = router;
