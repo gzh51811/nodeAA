@@ -18,13 +18,14 @@ $(() => {
     signIn.click(async () => {
         let inputEmail = $("#inputEmail").val();
         let inputPassword = $("#inputPassword").val();
+        console.log(inputEmail,inputPassword);
         let data = await login(inputEmail, inputPassword);
 
         let fn = {
             success() {
                 console.log('登录成功');
                 localStorage.setItem("token", data.token)
-                location.href = "dashboard.html"
+                // location.href = "dashboard.html"
             },
             fail() {
                 console.log('登录失败');
@@ -34,12 +35,13 @@ $(() => {
             }
         }
         fn[data.status]()
-        // if (data.status === 'success') {
-        //     console.log('登录成功');
-        //     localStorage.setItem("token",data.token)
-        //     location.href = "dashboard.html"
-        // } else {
-        //     console.log('登录失败');
-        // }
+        if (data.status === 'success') {
+            console.log('登录成功');
+            localStorage.setItem("token",data.token)
+            location.href = "dashboard.html"
+        } else {
+            console.log('登录失败');
+        }
+        
     })
 })

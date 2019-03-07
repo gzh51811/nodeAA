@@ -15,7 +15,7 @@ var token = {
 		//payload信息
 		var base64Str = Buffer.from(JSON.stringify(obj2), "utf8").toString("base64");
 		//添加签名，防篡改
-		var secret = "piggyyao.com";
+		var secret = "chenyu.com";
 		var hash = crypto.createHmac('sha256', secret);
 		hash.update(base64Str);
 		var signature = hash.digest('base64');
@@ -36,7 +36,7 @@ var token = {
 			return false;
 		}
 		//检验签名
-		var secret = "piggyyao.com";
+		var secret = "chenyu.com";
 		var hash = crypto.createHmac('sha256', secret);
 		hash.update(decArr[0]);
 		var checkSignature = hash.digest('base64');
