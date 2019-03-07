@@ -6,7 +6,7 @@ var {
     find,
     remove,
     ObjectId,
-    update
+    update,
     
 } = require("../libs/mongo.js");
 /* GET users listing. */
@@ -16,7 +16,7 @@ router.get('/', function (req, res, next) {
 router.post('/findUser', async (req, res, next) => {
     let {
         name,
-    } = req.body
+    } = req.body 
     let data = await find(`students`, name ? {
         name,
     } : {})
@@ -58,30 +58,55 @@ router.post('/updateUser', async (req, res, next) => {
 
 
 
-// router.post('/login', async (req, res, next) => {
-//     console.log(req.body);
-//     let {
-//       inputEmail,
-//       inputPassword
-//     } = req.body
-//     let data = await find(`students`, {
-//       name: inputEmail
-//     })
-//     console.log(data)
-//     if (data[0].password === inputPassword) {
-//       res.send({
-//         status: "success",
-//         token: token.createToken({
-//           inputEmail,
-//           inputPassword
-//         }, 60)
-//       });
-//     } else {
-//       res.send({
-//         status: "fail"
-//       });
-//     }
-//   });
+router.post('/login', async (req, res, next) => {
+    console.log(req.body);
+    let {
+      inputEmail,
+      inputPassword
+    } = req.body
+    let data = await find(`use`, {
+      name: inputEmail
+    })
+    console.log(data)
+    if (data[0].password === inputPassword) {
+      res.send({
+        status: "success",
+        token: token.createToken({
+          inputEmail,
+          inputPassword
+        }, 60)
+      });
+    } else {
+      res.send({
+        status: "fail"
+      });
+    }
+  });
+
+  // router.post('/login', async (req, res, next) => {
+  //   console.log(req.body);
+  //   let {
+  //     inputEmail,
+  //     inputPassword
+  //   } = req.body
+  //   let data = await find(`students`, {
+  //     name: inputEmail
+  //   })
+  //   console.log(data)
+  //   if (data[0].password === inputPassword) {
+  //     res.send({
+  //       status: "success",
+  //       token: token.createToken({
+  //         inputEmail,
+  //         inputPassword
+  //       }, 60)
+  //     });
+  //   } else {
+  //     res.send({
+  //       status: "fail"
+  //     });
+  //   }
+  // });
   
 //   router.post('/autoLogin', async (req, res, next) => {
 //     // console.log(req.headers)
